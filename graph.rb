@@ -5,6 +5,10 @@ class Edge
         @u, @v = u, v
     end
 
+    def u()
+        @u
+    end
+
     def v()
         @v
     end
