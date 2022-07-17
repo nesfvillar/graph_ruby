@@ -10,8 +10,10 @@ class Edge
     def v(); @v; end
 end
 
-    def v()
-        @v
+class WeightedEdge < Edge
+    def initialize(u, v, weight)
+        super(u, v)
+        @weight = weight
     end
 end
 
@@ -27,6 +29,10 @@ class Vertex
 
     def insert_edge(vertex)
         @edges.add(Edge.new(@symbol, vertex.symbol))
+    end
+
+    def insert_weighted_edge(vertex, weight)
+        @edges.add(WeightedEdge.new(@symbol, vertex.symbol, weight))
     end
 
     def find_edge(vertex)
@@ -68,12 +74,20 @@ end
 
 v1 = Vertex.new(:'New York')
 v2 = Vertex.new(:'London')
+v3 = Vertex.new(:'Paris')
 
 v1.insert_edge(v2)
 v2.insert_edge(v1)
 
+v1.insert_weighted_edge(v3, 100)
+v3.insert_weighted_edge(v1, 100)
+
+v2.insert_weighted_edge(v3, 5)
+v3.insert_weighted_edge(v2, 5)
+
 graph = Graph.new()
 graph.insert_vertex(v1)
 graph.insert_vertex(v2)
+graph.insert_vertex(v3)
 
 puts graph.vertices
