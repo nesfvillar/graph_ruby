@@ -42,7 +42,7 @@ class Vertex
 end
 
 class Graph
-    def initialize(vertices=Hash.new)
+    def initialize(vertices=Set.new)
         @vertices = vertices
     end
 
@@ -51,7 +51,19 @@ class Graph
     end
 
     def insert_vertex(vertex)
-        @vertices[vertex.symbol] = vertex
+        @vertices.add(vertex)
+    end
+
+    def delete_vertex(vertex)
+        @vertices.delete(vertex)
+    end
+
+    def find_vertex(vertex)
+        for v in @vertices
+            if v.symbol == vertex
+                return v
+            end
+        end
     end
 end
 
