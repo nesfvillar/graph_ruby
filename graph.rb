@@ -15,6 +15,8 @@ class WeightedEdge < Edge
         super(u, v)
         @weight = weight
     end
+
+    def weight(); @weight; end
 end
 
 class Vertex
