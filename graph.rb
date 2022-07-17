@@ -4,6 +4,10 @@ class Edge
     def initialize(u, v)
         @u, @v = u, v
     end
+
+    def v()
+        @v
+    end
 end
 
 class Vertex
@@ -20,8 +24,20 @@ class Vertex
         @edges
     end
 
-    def insert_edge(v)
-        @edges.add(Edge.new(@symbol, v.symbol))
+    def insert_edge(vertex)
+        @edges.add(Edge.new(@symbol, vertex.symbol))
+    end
+
+    def find_edge(vertex)
+        for edge in @edges
+            if edge.v == vertex.symbol
+                return edge
+            end
+        end
+    end
+
+    def delete_edge(vertex)
+        @edges.delete(self.find_edge(vertex))
     end
 end
 
@@ -45,9 +61,7 @@ v2 = Vertex.new(:'London')
 v1.insert_edge(v2)
 v2.insert_edge(v1)
 
-vertices = {:'New York' => v1, :'London' => v2}
-
-graph = Graph.new(vertices)
+graph = Graph.new()
 graph.insert_vertex(v1)
 graph.insert_vertex(v2)
 
