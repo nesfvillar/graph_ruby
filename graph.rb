@@ -34,11 +34,7 @@ class Vertex
     end
 
     def find_edge(vertex)
-        for edge in @edges
-            if edge.v == vertex.symbol
-                return edge
-            end
-        end
+        @edges.detect {|edge| edge.v === vertex.symbol}
     end
 
     def delete_edge(vertex)
@@ -62,11 +58,7 @@ class Graph
     end
 
     def find_vertex(vertex)
-        for v in @vertices
-            if v.symbol == vertex
-                return v
-            end
-        end
+        @vertices.detect {|element| element === vertex}
     end
 end
 
