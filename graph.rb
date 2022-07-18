@@ -1,33 +1,29 @@
 require 'set'
 
 class Edge
+    attr_reader :u, :v
+
     def initialize(u, v)
         @u, @v = u, v
     end
-
-    def u; @u; end
-
-    def v; @v; end
 end
 
 class WeightedEdge < Edge
+    attr_accessor :weight
+
     def initialize(u, v, weight)
         super(u, v)
         @weight = weight
     end
-
-    def weight; @weight; end
 end
 
 class Vertex
+    attr_reader :symbol, :edges
+
     def initialize(symbol)
         @symbol = symbol
         @edges = Set.new
     end
-
-    def symbol; @symbol; end
-
-    def edges; @edges; end
 
     def insert_edge(vertex)
         @edges.add(Edge.new(@symbol, vertex.symbol))
@@ -51,11 +47,11 @@ class Vertex
 end
 
 class Graph
+    attr_reader :vertices
+
     def initialize(vertices=Set.new)
         @vertices = vertices
     end
-
-    def vertices; @vertices; end
 
     def insert_vertex(vertex)
         @vertices.add(vertex)
