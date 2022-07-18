@@ -60,6 +60,42 @@ class Graph
     def find_vertex(vertex)
         @vertices.detect {|element| element === vertex}
     end
+
+    def bfs(start, finish)
+        to_explore = Queue.new.push start
+        seen = Set.new.add start
+        while !to_explore.empty?
+            current = to_explore.pop
+            if current === finish
+                return current
+            end
+            
+            for edge in current.edges
+                unless seen.include? edge.v
+                    seen.add edge.v
+                    to_explore.push edge.v 
+                end
+            end
+        end
+    end
+
+    def dfs(start, finish)
+        to_explore = Array.new.push start
+        seen = Set.new
+        while !to_explore.empty?
+            current = to_explore.pop
+            if current === finish
+                return current
+            end
+            
+            for edge in current.edges
+                unless seen.include? edge.v
+                    seen.add edge.v
+                    to_explore.push edge.v 
+                end
+            end
+        end
+    end
 end
 
 v1 = Vertex.new(:'New York')
