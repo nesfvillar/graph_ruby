@@ -5,9 +5,9 @@ class Edge
         @u, @v = u, v
     end
 
-    def u(); @u; end
+    def u; @u; end
 
-    def v(); @v; end
+    def v; @v; end
 end
 
 class WeightedEdge < Edge
@@ -16,7 +16,7 @@ class WeightedEdge < Edge
         @weight = weight
     end
 
-    def weight(); @weight; end
+    def weight; @weight; end
 end
 
 class Vertex
@@ -25,9 +25,9 @@ class Vertex
         @edges = Set.new
     end
 
-    def symbol(); @symbol; end
+    def symbol; @symbol; end
 
-    def edges(); @edges; end
+    def edges; @edges; end
 
     def insert_edge(vertex)
         @edges.add(Edge.new(@symbol, vertex.symbol))
@@ -55,7 +55,7 @@ class Graph
         @vertices = vertices
     end
 
-    def vertices(); @vertices; end
+    def vertices; @vertices; end
 
     def insert_vertex(vertex)
         @vertices.add(vertex)
