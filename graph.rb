@@ -26,11 +26,11 @@ class Vertex
     end
 
     def insert_edge(vertex)
-        @edges.add(Edge.new(@symbol, vertex.symbol))
+        @edges.add(Edge.new(@symbol, vertex.symbol)) unless @edges.include?(find_edge(vertex))
     end
 
     def insert_weighted_edge(vertex, weight)
-        @edges.add(WeightedEdge.new(@symbol, vertex.symbol, weight))
+        @edges.add(WeightedEdge.new(@symbol, vertex.symbol, weight)) unless @edges.include?(find_edge(vertex))
     end
 
     def find_edge(vertex)
